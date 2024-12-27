@@ -1,7 +1,15 @@
-const  express = require('express');
+const express = require("express");
+
+const urlRoute = require("./routes/");
+const {connectToMongoDB} = require("./connect");
 
 const app = express();
 
+connectToMongoDB("mongodb://localhost:27017/url-shortener")
+.then(() => console.log("Connected to MongoDB"));
+
 const PORT = 8001;
 
-app.listen(PORT , () => console.log(`Server is running on port 8001 : ${PORT}`)); 
+app.listen(PORT, () => console.log(`Server is running on port 8001 : ${PORT}`));
+
+app.use("/url", urlRoute);
