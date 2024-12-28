@@ -1,10 +1,8 @@
-const express = require('express');
+const express = require("express");
+const { handleGenerateNewShortURL } = require("../controllers/url"); // Import correctly
 
 const router = express.Router();
 
-const {handleGenerateShortURL} = require('../controllers/url');
+router.post("/", handleGenerateNewShortURL); // Register route
 
-router.post('/' , handleGenerateShortURL);
-
-
-module.exports = router;
+module.exports = router; // Export router
